@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="container-fluid">
+		<div class="row">
+			<h3 class="row">Search tweets and show that directly in a cartoDB map.</h3>
+				<form id='categoryForm' class="row spacer">
+					<input class="col-md-10 col-md-offset-1" id='category' type='text' placeholder='Add category'>
+					<button class="col-md-2 col-md-offset-5 btn btn-primary spacer" type="submit">Create map</button>			
+					<%= image_tag "ajax-loader.gif", :id => "loader-gif" %>
+
+				</form>
+		</div>
+		<div class="row separator"></div>
+		<div id="loading" class='row'>
+			<span>
+				We are asking Twitter for some information,
+				sending a csv file to CartoDB,
+				waiting for cartoDB to process it,
+				just few more seconds... ;) 
+				<br/><br/>
+			</span>
+			<div>
+				<%= image_tag "loading.gif" %>
+			</div>
+		</div>
+		<span id='tip'>Tip: Locations are not real information from twitter, not allowed to retrieve it :(</span>
+		
+		<div id="map" class="row spacer"></div>
+	</div>
+</div>

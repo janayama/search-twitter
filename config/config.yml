@@ -1,0 +1,18 @@
+defaults: &defaults
+  Twitter:
+    consumer_key: <%= ENV["TWITTER_CONSUMER_KEY"] %>
+    consumer_secret: <%= ENV["TWITTER_CONSUMER_SECRET"] %>
+    access_token: <%= ENV["TWITTER_ACCESS_TOEKN"] %>
+    access_token_secret: <%= ENV["TWITTER_TOKEN_SECRET"] %>
+  CartoDB:
+    user_name: <%= ENV["CARTODB_USERNAME"] %>
+    api_key: <%= ENV["CARTODB_KEY"] %>
+    version: 1
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
