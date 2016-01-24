@@ -32,7 +32,10 @@ $( document ).ready(function() {
     }
 
     function emptyMap() {
+        if (map)
+            map.remove();
         $('#map').html('');
+        $('#map')[0].className = $('#map')[0].className.replace(/\bleaflet.*?\b/g, '');
     }
 
     $('form').submit(function(e){
