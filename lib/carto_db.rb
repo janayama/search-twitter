@@ -1,5 +1,5 @@
 require 'rest-client'
-module CartoDB
+class CartoDB
   def initialize()
 	   config_app = Rails.application.config_for :config
 	   @user_name = config_app['CartoDB']['user_name']
