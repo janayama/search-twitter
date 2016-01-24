@@ -1,7 +1,4 @@
 class SearchController < ApplicationController
-	include TwitterGetter
-	include Cvs
-	include CartoDB
 
   def index
   end
@@ -13,17 +10,16 @@ class SearchController < ApplicationController
 			render json: "Missing parameter, category not found", status: 400 and return
 		end
 
-		tweets = get_tweets(category)
-	
-		header_csv = ['id', 'name', 'latitude', 'longitude','text']
-		csv_string = json_to_csv(tweets, header_csv)
-		path =  '/tmp/#{SecureRandom.urlsafe_base64}.csv'
-    File.open(path, "w+") do |f|
-    	f.write(csv_string)
-		end
+		tweets = TwitterGetter.new.get_tweets(category)
 
-		item_id = import_file(path)
-		details = get_details_item(item_id)
+		csv = CsvGenerate.new			
+		
+		path = csv.write(csv.convert_json(tweets))
+
+		cdb = CartoDB.new			
+
+		item_id = cdb.import_file(path)
+		details = cdb.get_details_item(item_id)
 		
 		render json: details, status: 200
   end
