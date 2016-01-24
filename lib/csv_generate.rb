@@ -1,11 +1,16 @@
 require 'csv'
-module Cvs
-  def json_to_csv(tweets, attributes)
+
+class CsvGenerate
+  def initialize
+    @header_attr = ['id', 'name', 'latitude', 'longitude', 'text']
+  end
+
+  def convert_json(tweets)
   	CSV.generate(headers: true) do |csv|
-      csv << attributes
+      csv << @header_attr
       tweets.each do |tweet|
       	coordinates = get_location()
-        csv << [tweet.user.id, tweet.user.screen_name, coordinates['latitude'], coordinates['longitude'], tweet.text]
+        csv << [tweet['user']['id'], tweet['user']['screen_name'], coordinates['latitude'], coordinates['longitude'], tweet['text']]
       end
     end
   end
@@ -23,4 +28,12 @@ module Cvs
 
 		{'latitude' => latitude, 'longitude' => longitude}
 	end
+
+  def write(csv_string)
+    path = "/tmp/#{SecureRandom.urlsafe_base64}.csv"
+    File.open(path, "w+") do |f|
+      f.write(csv_string)
+    end
+    return path
+  end
 end
