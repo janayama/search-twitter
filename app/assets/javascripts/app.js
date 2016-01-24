@@ -12,7 +12,7 @@ $( document ).ready(function() {
         })
         .addTo(map);
 
-        cartodb.createLayer(map, 'https://janaya.cartodb.com/api/v2/viz/ad73e2d8-c279-11e5-a565-0ef24382571b/viz.json', { https: true })
+        cartodb.createLayer(map, 'https://janaya.cartodb.com/api/v2/viz/ ' + vizId + '/viz.json', { https: true })
         .addTo(map)
         .on('done', function(layer) {
             var sublayer = layer.getSubLayer(0);
