@@ -7,9 +7,10 @@ $( document ).ready(function() {
           zoom: 3
         });
 
-        L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
-          attribution: 'Stamen'
-        }).addTo(map);
+        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+        })
+        .addTo(map);
 
         cartodb.createLayer(map, 'https://janaya.cartodb.com/api/v2/viz/ad73e2d8-c279-11e5-a565-0ef24382571b/viz.json', { https: true })
         .addTo(map)
