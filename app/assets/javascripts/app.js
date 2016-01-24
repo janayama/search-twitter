@@ -1,24 +1,23 @@
 $( document ).ready(function() {
 
     function loadMap(vizId) {
-        cartodb.createVis('map', 'https://janaya.cartodb.com/api/v2/viz/' + vizId + '/viz.json', {
-            search: true,
-            tiles_loader: true,
-            center_lat: 0,
-            center_lon: 0,
-            zoom: 2
-        })
-        .done(function(vis, layers) {
-          layers[1].setInteraction(true);
-          layers[1].on('featureOver', function(e, latlng, pos, data) {
-            cartodb.log.log(e, latlng, pos, data);
-          });
+        map = L.map('map', { 
+          zoomControl: true,
+          center: [0, 0],
+          zoom: 3
+        });
 
-          var map = vis.getNativeMap();
+        L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+          attribution: 'Stamen'
+        }).addTo(map);
 
-        })
-        .error(function(err) {
-          console.log(err);
+        cartodb.createLayer(map, 'https://janaya.cartodb.com/api/v2/viz/ad73e2d8-c279-11e5-a565-0ef24382571b/viz.json')
+        .addTo(map)
+        .on('done', function(layer) {
+            var sublayer = layer.getSubLayer(0);
+            cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['name', 'text']);
+        }).on('error', function() {
+            console.log("some error occurred");
         });
     }
 
