@@ -4,7 +4,6 @@ class SearchController < ApplicationController
 	include CartoDB
 
   def index
-  	render layout: "application"
   end
 
   def tweets
