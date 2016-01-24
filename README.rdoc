@@ -1,7 +1,20 @@
 == README
 
-Application created as an example of using CartoDB Api to create maps using the import functionality.
+## Search Tweets
 
-In order to run it will be needed to declare the constants of config/config.yml.
+Application created as an example of using CartoDB Api to create maps using the import API and js functionality.
 
-To run: rails server run.
+
+## Getting Started
+
+1. Install Rails at the command prompt if you haven't yet:
+
+     $ gem install rails
+
+2. Start rails server
+
+    $ rails server
+
+## Test
+
+	$ rake test
