@@ -1,5 +1,3 @@
-== README
-
 ## Search Tweets
 
 Application created as an example of using CartoDB Api to create maps using the import API and the js functionality.
