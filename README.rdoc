@@ -1,12 +1,10 @@
-## Search Tweets
-
 Application created as an example of using CartoDB Api to create maps using the import API and the js functionality.
 
 CartoDB docs: http://docs.cartodb.com/
 
 It will search in Twitter by the word selected and print the results in a CartoDB map. To do that it will export the results from Twitter to a csv and uploading it to the account of CartoDB specified in the config file.
 
-## Getting Started
+Getting Started
 
 1. Install Rails at the command prompt if you haven't yet:
 
