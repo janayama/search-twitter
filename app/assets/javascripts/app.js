@@ -24,10 +24,10 @@ $( document ).ready(function() {
     function loading(show) {
         if (show) {
             $('#loading, #loader-gif').show();
-            $('#tip, #map').hide();
+            $('#tip').hide();
         } else {
             $('#loading, #loader-gif').hide();
-            $('#tip, #map').show();
+            $('#tip').show();
         }
     }
 
